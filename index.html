@@ -33,6 +33,20 @@
       height: 315px;
       border: none;
     }
+    .back-btn {
+      display: inline-block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background: #4caf50;
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .back-btn:hover {
+      background: #388e3c;
+    }
   </style>
 </head>
 <body>
@@ -47,15 +61,22 @@
     <h2>女生</h2>
     <iframe src="https://www.youtube.com/embed/HnLX3EYPw1E" allowfullscreen></iframe>
     <iframe src="https://www.youtube.com/embed/jRC59Bq3Lv0" allowfullscreen></iframe>
+    <div class="back-btn" id="backBtn">⬅ 返回</div>
   </div>
 
   <script>
     const folderBtn = document.getElementById("folderBtn");
     const videoContainer = document.getElementById("videoContainer");
+    const backBtn = document.getElementById("backBtn");
 
     folderBtn.addEventListener("click", () => {
       folderBtn.style.display = "none";   // 隐藏资料夹
       videoContainer.style.display = "block"; // 显示里面的影片
+    });
+
+    backBtn.addEventListener("click", () => {
+      videoContainer.style.display = "none"; // 隐藏影片
+      folderBtn.style.display = "inline-block"; // 显示资料夹
     });
   </script>
 
