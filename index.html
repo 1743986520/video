@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
-  <title>籃球比賽</title>
+  <title>資料夾示例</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -15,6 +15,7 @@
       cursor: pointer;
       background: #ffd95a;
       padding: 15px 30px;
+      margin: 10px;
       border-radius: 8px;
       box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
       font-weight: bold;
@@ -51,33 +52,38 @@
 </head>
 <body>
 
-  <!-- 初始画面：资料夹 -->
-  <div class="folder" id="folderBtn">
-    📁 女生
+  <!-- 初始画面：两个资料夹 -->
+  <div id="folders">
+    <div class="folder" onclick="openFolder('girls')">📁 女生</div>
+    <div class="folder" onclick="openFolder('boys')">📁 男生</div>
   </div>
 
-  <!-- 打开后显示的内容 -->
-  <div class="videos" id="videoContainer">
-    <h2>女生</h2>
+  <!-- 女生资料夹内容 -->
+  <div class="videos" id="girls">
+    <h2>女生籃球比賽</h2>
     <iframe src="https://www.youtube.com/embed/HnLX3EYPw1E" allowfullscreen></iframe>
     <iframe src="https://www.youtube.com/embed/jRC59Bq3Lv0" allowfullscreen></iframe>
-    <div class="back-btn" id="backBtn">⬅ 返回</div>
+    <div class="back-btn" onclick="goBack()">⬅ 返回</div>
+  </div>
+
+  <!-- 男生资料夹内容 -->
+  <div class="videos" id="boys">
+    <h2>男生籃球比賽</h2>
+    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/tAGnKpE4NCI" allowfullscreen></iframe>
+    <div class="back-btn" onclick="goBack()">⬅ 返回</div>
   </div>
 
   <script>
-    const folderBtn = document.getElementById("folderBtn");
-    const videoContainer = document.getElementById("videoContainer");
-    const backBtn = document.getElementById("backBtn");
+    function openFolder(folderId) {
+      document.getElementById("folders").style.display = "none"; // 隐藏所有资料夹
+      document.getElementById(folderId).style.display = "block"; // 显示选中的资料夹
+    }
 
-    folderBtn.addEventListener("click", () => {
-      folderBtn.style.display = "none";   // 隐藏资料夹
-      videoContainer.style.display = "block"; // 显示里面的影片
-    });
-
-    backBtn.addEventListener("click", () => {
-      videoContainer.style.display = "none"; // 隐藏影片
-      folderBtn.style.display = "inline-block"; // 显示资料夹
-    });
+    function goBack() {
+      document.getElementById("folders").style.display = "block"; // 显示资料夹
+      document.querySelectorAll(".videos").forEach(v => v.style.display = "none"); // 隐藏影片
+    }
   </script>
 
 </body>
